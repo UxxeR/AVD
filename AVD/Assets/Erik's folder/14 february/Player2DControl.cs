@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,7 +39,7 @@ public class Player2DControl : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-            //  animator.SetBool("IsJumping", true); 
+            animator.SetBool("IsJumping", true); 
         }
 
         if (Input.GetButtonDown("Crouch"))
@@ -55,7 +55,7 @@ public class Player2DControl : MonoBehaviour
 
     public void OnLanding()
     {
-        // animator.SetBool("IsJumping", false); 
+        animator.SetBool("IsJumping", false); 
     }
 
     void FixedUpdate()
