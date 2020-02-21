@@ -320,6 +320,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7749225962218445087, guid: c2511867e74297648988519331b95331,
         type: 3}
       propertyPath: m_Name
@@ -728,6 +743,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7749225962218445087, guid: c2511867e74297648988519331b95331,
         type: 3}
       propertyPath: m_Name
@@ -1533,7 +1563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084423088}
   m_LocalRotation: {x: -0.707188, y: -0.0002985192, z: 0.00013005678, w: 0.7070255}
-  m_LocalPosition: {x: 2, y: -9.125, z: 1.2615356}
+  m_LocalPosition: {x: 2, y: -8.93, z: 1.26}
   m_LocalScale: {x: 2.1126003, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 383151684}
@@ -1901,6 +1931,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511769018022904217, guid: c2511867e74297648988519331b95331,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7749225962218445087, guid: c2511867e74297648988519331b95331,
         type: 3}
       propertyPath: m_Name
