@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/ADV/MAIN2019V.unity
     guid: 1ffa77a7b7c2e9b4b8979f9525b129a1
+  - enabled: 1
+    path: Assets/Erik's folder/Scenes/UI and sprite animations.unity
+    guid: cca1da7644586fc4780dcad317e07d24
+  - enabled: 1
+    path: Assets/Erik's folder/Scenes/2d scene.unity
+    guid: ca576e0c9053cf34ea0341b24aad8989
   m_configObjects: {}
