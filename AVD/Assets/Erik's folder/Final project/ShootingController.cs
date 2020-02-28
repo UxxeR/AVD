@@ -9,10 +9,10 @@ public class ShootingController : MonoBehaviour
     {
         if (GameObject.Find("Player").transform.localScale.x > 0)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(50000f * Time.deltaTime, 0));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(80000f * Time.deltaTime, 0));
         }
         else {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-50000f * Time.deltaTime, 0));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-80000f * Time.deltaTime, 0));
         }
     }
 

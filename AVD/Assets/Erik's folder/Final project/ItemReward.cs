@@ -26,6 +26,7 @@ public class ItemReward : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             pointsController.Points += pointsGranted;
+            
             gameObject.SetActive(false);
         }
     }
