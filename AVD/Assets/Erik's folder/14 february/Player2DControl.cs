@@ -7,6 +7,9 @@ public class Player2DControl : MonoBehaviour
 
     public CharacterController2D controller;
     public Animator animator;
+    [SerializeField]
+    private GameObject shootingObject;
+    private GameObject shoot;
 
     public float runSpeed = 40f;
 
@@ -27,6 +30,7 @@ public class Player2DControl : MonoBehaviour
     private void Start()
     {
         Physics2D.gravity = new Vector2(0, Gravity2D);
+
     }
 
     void Update()
@@ -34,8 +38,13 @@ public class Player2DControl : MonoBehaviour
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        animator.SetFloat("Movement", Mathf.Abs(horizontalMove)); 
+        animator.SetFloat("Movement", Mathf.Abs(horizontalMove));
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            shoot = Instantiate(shootingObject, new Vector2(this.gameObject.transform.position.x + 1f, this.gameObject.transform.position.y + 7f), Quaternion.identity);
+            Destroy(shoot, 2f);
+        }
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -56,6 +65,10 @@ public class Player2DControl : MonoBehaviour
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false); 
+    }
+
+    public void Oncrouching(bool isCrouching) {
+        animator.SetBool("IsCrouching", isCrouching);
     }
 
     void FixedUpdate()

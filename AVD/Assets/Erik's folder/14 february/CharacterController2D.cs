@@ -27,7 +27,7 @@ public class CharacterController2D : MonoBehaviour
 
 
 
-	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+	const float k_GroundedRadius = .05f; // Radius of the overlap circle to determine if grounded
 
 	private bool m_Grounded;            // Whether or not the player is grounded.
 
