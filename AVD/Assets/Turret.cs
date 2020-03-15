@@ -13,6 +13,10 @@ public class Turret : MonoBehaviour
     private int i;
     [SerializeField]
     private bool active;
+    [SerializeField]
+    private Transform enemyPosition;
+
+    public bool Active { get => active; set => active = value; }
 
     // Start is called before the first frame update
     void Start()

@@ -19,5 +19,6 @@ public class TurretSpawner : MonoBehaviour
             if (GameObject.Find("Turret(Clone)") != null) Destroy(GameObject.Find("Turret(Clone)"));
             summonTurret();
         }
+        Destroy(gameObject);
     }
 }

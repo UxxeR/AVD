@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
 {
     private float pitch;
     private AudioSource audioSource;
+    private EnemyTurret enemyTurret;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,8 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy") {
-            
+            other.gameObject.GetComponent<EnemyTurret>().CurrentHealth -= 1;
         }
+        Destroy(gameObject);
     }
 }
