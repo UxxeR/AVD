@@ -9,6 +9,7 @@ public class LocomotionSimpleAgent : MonoBehaviour
     NavMeshAgent agent;
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 velocity = Vector2.zero;
+    public TimelineController timeline;
 
     void Start()
     {
@@ -51,5 +52,17 @@ public class LocomotionSimpleAgent : MonoBehaviour
         transform.position = agent.nextPosition;
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DanceFloor")
+        {
+            anim.SetBool("dance", true);
+            timeline.Play();
+        }
+        else {
+            anim.SetBool("dance", false);
+        }
     }
 }
