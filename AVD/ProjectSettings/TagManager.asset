@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Enemy
   - DanceFloor
+  - Money
+  - Potion
+  - Vision
   layers:
   - Default
   - TransparentFX
@@ -25,7 +28,7 @@ TagManager:
   - PlayerEquipment
   - SelfIgnore
   - Ground
-  - 
+  - Vision
   - 
   - 
   - 

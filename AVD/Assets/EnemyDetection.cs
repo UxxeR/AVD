@@ -1,37 +1,71 @@
-﻿using System.Collections;
+﻿using CreatorKitCode;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
+
     [SerializeField]
-    private GameObject enemy;
+    private GameObject enemy = null;
     [SerializeField]
-    private GameObject cannon;
     private Turret turret;
-    private bool enemyDetected;
+    private Vector3 lastPosition = Vector3.zero;
+    private Quaternion lookAtRotation;
+    private bool canAttack;
+    private float speed = 100f;
+    private float angle = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        turret = GameObject.Find("Turret(Clone)").GetComponent<Turret>();
+        StartCoroutine(CanAttack());
     }
-
-    // Update is called once per frame
     void Update()
     {
-        enemy.transform.position -= cannon.transform.position;
-        Quaternion qua = Quaternion.LookRotation(enemy.transform.position, Vector3.up);
-        cannon.transform.rotation = Quaternion.RotateTowards(cannon.transform.rotation, qua, 10f * Time.deltaTime);
+        if(enemy == null) turret.TurretAnimator.SetTrigger("Idle");
+        if (turret.IsActive)
+        {
+            if (lastPosition != enemy.transform.position)
+            {
+                lastPosition = enemy.transform.position;
+                lookAtRotation = Quaternion.LookRotation(lastPosition - transform.position);
+            }
+
+            if (transform.rotation != lookAtRotation)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAtRotation, speed * Time.deltaTime);
+            }
+
+            if (transform.rotation.y >= lookAtRotation.y - angle && transform.rotation.y <= lookAtRotation.y + angle)
+            {
+                turret.StartCoroutine(turret.Shoot(0.5f));
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (enemyDetected) {
-            turret.Active = true;
+        if (other.tag == "Enemy" && other.name != "Training Dummy" && canAttack == true)
+        {
+            turret.TurretAnimator.SetTrigger("Attacking");
+            turret.IsActive = true;
+            enemy = other.gameObject;
+            if (enemy.GetComponent<CharacterData>().Stats.CurrentHealth == 0) {
+                enemy = null;
+            }
         }
-        else {
-            turret.Active = false;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy" && other.name != "Training Dummy")
+        {
+            enemy = null;
+            turret.IsActive = false;
         }
+    }
+
+    IEnumerator CanAttack() {
+        yield return new WaitForSeconds(2.75f);
+        canAttack = true;
     }
 }

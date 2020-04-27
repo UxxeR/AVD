@@ -85,7 +85,7 @@ namespace CreatorKitCodeInternal {
             m_CalculatedPath = new NavMeshPath();
         
             m_Agent = GetComponent<NavMeshAgent>();
-            m_Animator = GetComponentInChildren<Animator>();
+            m_Animator = GameObject.Find("MikeMoose").GetComponent<Animator>();
         
             m_Agent.speed = Speed;
             m_Agent.angularSpeed = 360.0f;

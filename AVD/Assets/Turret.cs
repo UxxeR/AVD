@@ -12,30 +12,43 @@ public class Turret : MonoBehaviour
     private Transform[] BulletPositions;
     private int i;
     [SerializeField]
-    private bool active;
+    private bool isActive;
+    private GameObject turret;
     [SerializeField]
-    private Transform enemyPosition;
+    private Animator turretAnimator;
 
-    public bool Active { get => active; set => active = value; }
+    public bool IsActive { get => isActive; set => isActive = value; }
+    public Animator TurretAnimator { get => turretAnimator; set => turretAnimator = value; }
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject.Find("TurretSpawnAudio").GetComponent<AudioSource>().Play();
-        Destroy(GameObject.Find("Turret(Clone)"), 10f);
+        turret = this.gameObject.transform.parent.parent.gameObject;
+        turretAnimator = turret.GetComponent<Animator>();
+        StartCoroutine(TurretDie(20f));
+        BulletPositions[0].gameObject.GetComponent<ParticleSystem>().Stop();
+        BulletPositions[1].gameObject.GetComponent<ParticleSystem>().Stop();
+        BulletPositions[2].gameObject.GetComponent<ParticleSystem>().Stop();
+        BulletPositions[3].gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (active)
-        {
-            instantiatedPrefab = Instantiate(bullet, BulletPositions[i].position, BulletPositions[i].rotation);
-            i++;
-            if (i >= BulletPositions.Length) i = 0;
-            Destroy(instantiatedPrefab, 3f);
-            rb = instantiatedPrefab.GetComponent<Rigidbody>();
-            rb.AddForce(new Vector3(0, 0, 25f), ForceMode.Impulse);
-        }
+    IEnumerator TurretDie(float time) {
+        yield return new WaitForSeconds(time);
+        turret.GetComponent<Animator>().SetTrigger("Die");
+        yield return new WaitForSeconds(3f);
+        Destroy(turret);
+    }
+
+    public IEnumerator Shoot(float cadence) {
+        BulletPositions[i].gameObject.GetComponent<ParticleSystem>().Play();
+        instantiatedPrefab = Instantiate(bullet, BulletPositions[i].position, BulletPositions[i].rotation);
+        rb = instantiatedPrefab.GetComponent<Rigidbody>();
+        yield return new WaitForSeconds(cadence);
+        BulletPositions[i].gameObject.GetComponent<ParticleSystem>().Stop();
+        rb.AddForce(instantiatedPrefab.transform.forward * 20f, ForceMode.Impulse);
+        i++;
+        if (i >= BulletPositions.Length) i = 0;
+        Destroy(instantiatedPrefab, 3f);
     }
 }

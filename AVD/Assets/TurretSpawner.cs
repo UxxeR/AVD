@@ -6,7 +6,6 @@ public class TurretSpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject prefab;
-    private GameObject instantiatedPrefab;
 
     private void summonTurret()
     {

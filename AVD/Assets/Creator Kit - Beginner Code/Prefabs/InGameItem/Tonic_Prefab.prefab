@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3033293687468328205}
   - component: {fileID: 2335873363935358293}
   m_Layer: 0
-  m_Name: Tonic
-  m_TagString: Untagged
+  m_Name: Tonic_Prefab
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

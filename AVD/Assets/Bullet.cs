@@ -7,22 +7,19 @@ public class Bullet : MonoBehaviour
 {
     private float pitch;
     private AudioSource audioSource;
-    private EnemyTurret enemyTurret;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GameObject.Find("BulletAudio").GetComponent<AudioSource>();
-        pitch = Random.Range(-300, 300) / 100;
+        pitch = Random.Range(200, 100) / 100;
         audioSource.pitch = pitch;
         audioSource.Play();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy") {
-            other.gameObject.GetComponent<EnemyTurret>().CurrentHealth -= 1;
-        }
-        Destroy(gameObject);
+        if (other.tag == "Enemy") other.gameObject.GetComponent<CharacterData>().Stats.ChangeHealth(-1);
+        if (other.gameObject.layer != 17) Destroy(gameObject);
     }
 }

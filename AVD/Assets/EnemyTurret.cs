@@ -20,8 +20,6 @@ public class EnemyTurret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth <= 0) {
-            Destroy(gameObject);
-        }
+        if (currentHealth <= 0) Destroy(gameObject);
     }
 }
